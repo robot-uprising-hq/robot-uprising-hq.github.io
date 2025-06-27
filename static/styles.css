@@ -15,9 +15,12 @@
 }
 
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
+    background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px),
+    linear-gradient(0deg, #101520 0%, #1a2a4a 120%);
 }
 
 body {
@@ -29,11 +32,6 @@ body {
     flex-direction: column;
     position: relative;
     overflow-x: hidden;
-    padding-bottom: 50px;
-    background:
-        repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px),
-        linear-gradient(0deg, #101520 0%, #1a2a4a 100%);
 }
 
 
@@ -281,7 +279,7 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
-    padding-bottom: 100px; 
+    padding-bottom: 100px;
 }
 
 @media (max-width: 768px) {

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add resize observer to ensure things work well on all screens
     const resizeObserver = new ResizeObserver(entries => {
         // Reset absolute positioning on small screens
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 500) {
             const containers = document.querySelectorAll('.win95-container');
             containers.forEach(container => {
                 if (!container.classList.contains('maximized')) {
@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
         faqQuestions.forEach(question => {
             question.addEventListener('click', function() {
                 const answer = this.nextElementSibling;
+                const container = this.closest('.win95-container');
+
+                // Fix the container's width to prevent resizing
+                container.style.width = `${container.offsetWidth}px`;
 
                 if (answer.classList.contains('open')) {
                     answer.classList.remove('open');
