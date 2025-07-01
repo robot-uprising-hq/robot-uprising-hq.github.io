@@ -30,6 +30,11 @@ body {
     flex-direction: column;
     position: relative;
     overflow-x: hidden;
+    background:
+        linear-gradient(45deg, transparent 47%, rgba(45, 226, 230, 0.03) 47%, rgba(45, 226, 230, 0.03) 53%, transparent 53%),
+        linear-gradient(-45deg, transparent 47%, rgba(45, 226, 230, 0.03) 47%, rgba(45, 226, 230, 0.03) 53%, transparent 53%),
+        linear-gradient(135deg, #0a0e1a 0%, #181f2f 100%);
+    background-size: 30px 30px, 30px 30px, 100% 100%;
 }
 
 .futuristic-container {
