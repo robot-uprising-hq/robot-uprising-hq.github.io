@@ -1,38 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     setupNavTabs();
-
     setupFAQInteraction();
 
-    function setupWindowControls(container) {
-        const closeBtn = container.querySelector('.button.close');
-
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function(e) {
-                container.classList.add('collapsed');
-                container.classList.add('semi-closed');
-                e.preventDefault();
-            });
-        }
-    }
-
-    // Add resize observer to ensure things work well on all screens
-    const resizeObserver = new ResizeObserver(entries => {
-        // Reset absolute positioning on small screens
-        if (window.innerWidth < 500) {
-            const containers = document.querySelectorAll('.win95-container');
-            containers.forEach(container => {
-                if (!container.classList.contains('maximized')) {
-                    container.style.position = 'relative';
-                    container.style.top = 'auto';
-                    container.style.left = 'auto';
-                }
-            });
-        }
-    });
-
-    resizeObserver.observe(document.body);
-
-    // Function to toggle FAQ answers - all answers start hidden
+    // Remove window controls and resize observer for futuristic design
     function setupFAQInteraction() {
         const faqQuestions = document.querySelectorAll('.faq-question');
         const faqAnswers = document.querySelectorAll('.faq-answer');
@@ -45,10 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
         faqQuestions.forEach(question => {
             question.addEventListener('click', function() {
                 const answer = this.nextElementSibling;
-                const container = this.closest('.win95-container');
+                const container = this.closest('.futuristic-container');
 
                 // Fix the container's width to prevent resizing
-                container.style.width = `${container.offsetWidth}px`;
+                if (container) {
+                    container.style.width = `${container.offsetWidth}px`;
+                }
 
                 if (answer.classList.contains('open')) {
                     answer.classList.remove('open');
