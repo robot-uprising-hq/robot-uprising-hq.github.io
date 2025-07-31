@@ -86,4 +86,31 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         switchTabAndScroll('hackathon', 'micro-invaders');
     });
+
+    // Mystery Section animated title effect
+    const mysteryTitle = document.getElementById('mystery-title');
+    if (mysteryTitle) {
+        const originalText = mysteryTitle.textContent;
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+        // Set monospace font for pixel stability
+        mysteryTitle.style.fontFamily = 'monospace, monospace';
+        let currentArr = originalText.split('');
+        function randomizeSomeChars() {
+            let tempArr = currentArr.slice();
+            let numToChange = Math.floor(Math.random() * 3) + 1;
+            let indices = [];
+            while (indices.length < numToChange) {
+                let idx = Math.floor(Math.random() * originalText.length);
+                if (originalText[idx] !== ' ' && !indices.includes(idx)) {
+                    indices.push(idx);
+                }
+            }
+            indices.forEach(i => {
+                tempArr[i] = chars[Math.floor(Math.random() * chars.length)];
+            });
+            currentArr = tempArr;
+            mysteryTitle.textContent = tempArr.join('');
+        }
+        setInterval(randomizeSomeChars, 120);
+    }
 });
