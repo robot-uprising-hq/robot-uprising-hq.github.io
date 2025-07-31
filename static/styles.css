@@ -147,7 +147,7 @@ header .logo {
 header p {
     color: var(--futuristic-accent);
     margin-top: 10px;
-    font-size: 1.15em;
+    font-size: 1.35em;
     font-weight: 700;
     text-align: center;
     letter-spacing: 2px;
@@ -455,4 +455,66 @@ a:hover {
 
 .micro-invaders-text {
     text-align: center;
+}
+
+/* Media query to stack nav tabs vertically on mobile */
+@media (max-width: 600px), (orientation: portrait) {
+    .nav-tabs {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 94%;
+        margin: 12px 3% 0 3%;
+    }
+    .nav-tab {
+        width: 100%;
+        min-width: 0;
+        padding: 8px 10px;
+        font-size: 0.98em;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid var(--futuristic-border);
+        border-top: none;
+        margin: 0;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    .nav-tab:last-child {
+        border-bottom: none;
+    }
+    .site-tagline {
+        font-size: 1.1em;
+        text-align: center;
+        margin: 10px 0 0 0;
+    }
+    .site-tagline {
+        /* Replace 'Robotics and AI Experience' with a line break on mobile */
+        display: block;
+    }
+    .site-tagline br {
+        display: inline;
+    }
+}
+
+@media (max-width: 600px), (orientation: portrait) {
+    .site-tagline {
+        /* Use a line break for mobile */
+        white-space: normal;
+    }
+}
+
+.site-tagline .mobile-tagline {
+    display: none;
+}
+.site-tagline .desktop-tagline {
+    display: inline;
+}
+@media (max-width: 600px), (orientation: portrait) {
+    .site-tagline .mobile-tagline {
+        display: inline;
+    }
+    .site-tagline .desktop-tagline {
+        display: none;
+    }
 }
