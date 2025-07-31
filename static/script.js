@@ -49,4 +49,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    function switchTabAndScroll(tabName, sectionId) {
+        document.querySelectorAll('.nav-content').forEach(function(section) {
+            section.classList.remove('active');
+        });
+        var tabContent = document.getElementById(tabName + '-content');
+        if (tabContent) {
+            tabContent.classList.add('active');
+        }
+        document.querySelectorAll('.nav-tab').forEach(function(tab) {
+            tab.classList.remove('active');
+        });
+        var navTab = document.querySelector('.nav-tab[data-tab="' + tabName + '"]');
+        if (navTab) {
+            navTab.classList.add('active');
+        }
+        if (sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    document.getElementById('apply-membership-btn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        switchTabAndScroll('about', 'ccsh-citizenship-about');
+    });
+
+    document.getElementById('competition-guide-btn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        switchTabAndScroll('hackathon', 'micro-invaders');
+    });
 });
