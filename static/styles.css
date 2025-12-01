@@ -1,8 +1,8 @@
 :root {
     --futuristic-bg: #0a0e1a;
     --futuristic-panel: #181f2f;
-    --futuristic-border: #2de2e6;
-    --futuristic-glow: 0 0 16px #2de2e6, 0 0 32px #2de2e6;
+    --futuristic-border: #0f5859;
+    --futuristic-glow: 0 0 2px rgba(45, 226, 230, 0.4), 0 0 12px rgba(45, 226, 230, 0.2);
     --futuristic-accent: #2de2e6;
     --futuristic-text: #e6f1ff;
     --futuristic-muted: #6c7a89;
@@ -40,7 +40,7 @@ body {
 .futuristic-container {
     background: var(--futuristic-panel);
     border: 1.5px solid var(--futuristic-border);
-    box-shadow: 0 4px 32px rgba(45, 226, 230, 0.08), 0 0 0 2px rgba(45,226,230,0.05);
+    box-shadow: 0 2px 12px rgba(45, 226, 230, 0.03), 0 0 0 1px rgba(45,226,230,0.02);
     margin-bottom: 32px;
     position: relative;
     overflow: hidden;
@@ -48,7 +48,7 @@ body {
 }
 
 .futuristic-container:hover {
-    box-shadow: 0 0 32px 4px #2de2e6;
+    box-shadow: 0 0 12px 2px rgba(45, 226, 230, 0.4);
 }
 
 .futuristic-title {
@@ -94,7 +94,7 @@ body {
     text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
-    box-shadow: 0 0 12px 0 rgba(45,226,230,0.15);
+    box-shadow: 0 0 5px 0 rgba(45,226,230,0.06);
     margin-top: 12px;
     text-align: center;
     text-decoration: none;
@@ -111,7 +111,7 @@ body {
     background: var(--futuristic-discord);
     color: #fff;
     border: 1.5px solid #fff;
-    box-shadow: 0 0 24px 0 #5865F2;
+    box-shadow: 0 0 10px 0 rgba(88, 101, 242, 0.4);
     font-size: 1.15em;
     margin-top: 18px;
     transition: background 0.2s, box-shadow 0.2s;
@@ -120,7 +120,7 @@ body {
 .discord-button:hover {
     background: #4752c4;
     color: #fff;
-    box-shadow: 0 0 32px 4px #5865F2;
+    box-shadow: 0 0 12px 2px rgba(88, 101, 242, 0.5);
 }
 
 .discord-button i {
@@ -151,7 +151,7 @@ header p {
     font-weight: 700;
     text-align: center;
     letter-spacing: 2px;
-    text-shadow: 0 0 8px #2de2e6;
+    text-shadow: 0 0 3px rgba(45, 226, 230, 0.4);
 }
 
 .nav-tabs {
@@ -183,12 +183,26 @@ header p {
     background: #232b3d;
 }
 
+.nav-tab a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-tab a:hover {
+    color: inherit;
+    text-shadow: none;
+    text-decoration: none;
+}
+
 .nav-tab.active {
     background: var(--futuristic-bg);
     color: var(--futuristic-accent);
     border: 1.5px solid var(--futuristic-border);
     border-bottom: none;
-    box-shadow: 0 -2px 16px #2de2e6;
+    box-shadow: 0 -1px 6px rgba(45, 226, 230, 0.4);
 }
 
 .nav-content {
@@ -241,7 +255,7 @@ a {
 
 a:hover {
     color: #ffffff; /* Change color on hover */
-    text-shadow: 0 0 8px var(--futuristic-accent); /* Add glow effect on hover */
+    text-shadow: 0 0 3px rgba(45, 226, 230, 0.4); /* Add glow effect on hover */
     text-decoration: underline;
 }
 
@@ -263,7 +277,7 @@ a:hover {
 
 .repo-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(45, 226, 230, 0.2);
+    box-shadow: 0 4px 8px rgba(45, 226, 230, 0.08);
 }
 
 .repo-item h3 {
@@ -366,11 +380,6 @@ a:hover {
     margin: 0.7em 0;
 }
 
-/* .faq-answer a {
-    color: var(--win95-accent);
-    text-decoration: none;
-} */
-
 .faq-answer a:hover {
     text-decoration: underline;
 }
@@ -420,6 +429,14 @@ a:hover {
     left: 20px;
     max-width: 120px;
 }
+
+/* Hide header logo on mobile since sticky nav has its own logo */
+@media (max-width: 600px), (orientation: portrait) {
+    header .logo {
+        display: none;
+    }
+}
+
 /* Responsive adjustments for new sections */
 @media (max-width: 768px) {
     .repo-showcase {
@@ -431,8 +448,8 @@ a:hover {
     .feature-list li {
         font-size: 0.95em;
     }
-        .robot-image {
-        height: 200px;
+    .robot-image {
+        max-height: 300px;
     }
 }
 
@@ -448,7 +465,7 @@ a:hover {
     object-fit: contain;
     border: 2px solid var(--futuristic-border);
     border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(45, 226, 230, 0.2);
+    box-shadow: 0 2px 6px rgba(45, 226, 230, 0.08);
     margin-bottom: 24px;
     display: block;
 }
@@ -457,50 +474,16 @@ a:hover {
     text-align: center;
 }
 
-/* Media query to stack nav tabs vertically on mobile */
 @media (max-width: 600px), (orientation: portrait) {
-    .nav-tabs {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-        width: 94%;
-        margin: 12px 3% 0 3%;
-    }
-    .nav-tab {
-        width: 100%;
-        min-width: 0;
-        padding: 8px 10px;
-        font-size: 0.98em;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-bottom: 1px solid var(--futuristic-border);
-        border-top: none;
-        margin: 0;
-        text-align: left;
-        box-sizing: border-box;
-    }
-    .nav-tab:last-child {
-        border-bottom: none;
-    }
     .site-tagline {
         font-size: 1.1em;
         text-align: center;
         margin: 10px 0 0 0;
-    }
-    .site-tagline {
-        /* Replace 'Robotics and AI Experience' with a line break on mobile */
         display: block;
+        white-space: normal;
     }
     .site-tagline br {
         display: inline;
-    }
-}
-
-@media (max-width: 600px), (orientation: portrait) {
-    .site-tagline {
-        /* Use a line break for mobile */
-        white-space: normal;
     }
 }
 
@@ -516,5 +499,127 @@ a:hover {
     }
     .site-tagline .desktop-tagline {
         display: none;
+    }
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: var(--futuristic-panel);
+    border: 1.5px solid var(--futuristic-border);
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: var(--futuristic-accent);
+    margin: 3px 0;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -7px);
+}
+
+/* Mobile sticky header */
+.mobile-nav-wrapper {
+    display: none;
+}
+
+@media (max-width: 600px), (orientation: portrait) {
+    .mobile-nav-wrapper {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--futuristic-panel);
+        border-bottom: 1.5px solid var(--futuristic-border);
+        padding: 10px 15px;
+        z-index: 1000;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobile-nav-wrapper .mobile-logo {
+        height: 30px;
+        width: auto;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        margin: 0;
+    }
+
+    .nav-tabs {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        margin: 0;
+        background: var(--futuristic-panel);
+        border: 1.5px solid var(--futuristic-border);
+        border-top: none;
+        position: fixed;
+        top: 52px;
+        left: 0;
+        right: 0;
+        z-index: 999;
+    }
+
+    .nav-tabs.active {
+        display: flex;
+    }
+
+    .nav-tab {
+        width: 100%;
+        min-width: 0;
+        padding: 14px 20px;
+        font-size: 1em;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(45, 226, 230, 0.2);
+        margin: 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .nav-tab:last-child {
+        border-bottom: none;
+    }
+
+    .nav-tab.active {
+        border: none;
+        border-bottom: 1px solid rgba(45, 226, 230, 0.2);
+        box-shadow: none;
+    }
+
+    .nav-tab:last-child.active {
+        border-bottom: none;
+    }
+
+    header {
+        padding-top: 178px; /* Add extra padding for fixed nav */
+    }
+
+    body {
+        padding-top: 0;
     }
 }

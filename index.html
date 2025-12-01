@@ -19,6 +19,15 @@
         <meta name="author" content="Robot Uprising RY">
 </head>
 <body>
+<!-- Mobile sticky navigation -->
+<div class="mobile-nav-wrapper" id="mobile-nav-wrapper">
+    <img src="/static/images/RU18_white.png" alt="Robot Uprising Logo" class="mobile-logo">
+    <button class="hamburger-menu" id="mobile-hamburger-menu" aria-label="Toggle navigation">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+</div>
 <header>
     <div class="video-background">
         <video autoplay muted loop playsinline poster="/static/images/poster1.png">
@@ -31,9 +40,10 @@
         <span class="desktop-tagline">A story-driven Robotics and AI Experience</span>
         <span class="mobile-tagline">A story-driven <br>Robotics and AI Experience<br><br></span>
     </p>
-    <ul class="nav-tabs">
+    <ul class="nav-tabs" id="nav-tabs">
         <li class="nav-tab active" data-tab="hackathon">HACKATHON</li>
         <li class="nav-tab" data-tab="about">ABOUT US</li>
+        <li class="nav-tab" onclick="window.open('https://holvi.com/shop/robotuprising/', '_blank')">WEBSHOP</li>
         <li class="nav-tab" data-tab="get-involved">GET INVOLVED</li>
     </ul>
 </header>
@@ -59,12 +69,11 @@
     </div>
     <div id="details" class="futuristic-container">
         <div class="futuristic-title">
-            <span>Upcoming Events</span>
+            <span>Robot Uprising Robotics Kits</span>
         </div>
         <div class="futuristic-content">
-            <h3>[ 01. - 02.08.2025 ] Micro Invaders Challenge at Summer Assembly</h3>
-            <p>Find us and come say hi to us @ <strong>Summer Assembly 2025</strong>! See if you can beat our AI in a 2v2 setup!</p>
-            <p>More information in the <strong><a href="https://assembly.org/en/events/summer25/program/micro-invaders-robot-challenge-by-robot-uprising-ry">Assembly Program →</strong></a></p>
+            <p>Our very own robotics kits will be available soon.</p>
+            <p>Please visit our <strong><a href="https://holvi.com/shop/robotuprising/" target="_blank" rel="noopener noreferrer">webshop</a></strong> to put in a pre-order.</p>
         </div>
     </div>
 
@@ -115,7 +124,7 @@
 
             <h3>Upcoming Competitions</h3>
             <p>Our next competitions are being planned. To stay up to date on when they're published, join our Discord above!
-               To get started on your competition solution, checkout <a href="https://github.com/robot-uprising-hq/ai-guide">the competition guide</a> and <a href="">the community simulator</a> to get started!</p>
+               To get started on your competition solution, checkout <a href="https://github.com/robot-uprising-hq/ai-guide">the competition guide</a> and <a href="https://github.com/robot-uprising-hq">the community simulator</a> to get started!</p>
             <ul>
                 <li>Micro Invaders 2025: ????</li>
                 <li>Micro Invaders 2026: Spring tournament at <strong>Metropolia AMK</strong> in Helsinki</li>
@@ -191,7 +200,7 @@
             <div class="faq-item">
                 <div class="faq-question">What skills should I have?</div>
                 <div class="faq-answer">
-                    <p>The competitions and hackathons organized by Robot Uprising are intended for all robotics enthusiasts, whether your role is primarily in development, design, building or just scheming tricks to outsmart the opponents! When applying to compete, you should make sure that someone in your team has basic programming programming experience.</p>
+                    <p>The competitions and hackathons organized by Robot Uprising are intended for all robotics enthusiasts, whether your role is primarily in development, design, building or just scheming tricks to outsmart the opponents! When applying to compete, you should make sure that someone in your team has basic programming experience.</p>
                 </div>
             </div>
 

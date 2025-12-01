@@ -1,6 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
     setupNavTabs();
     setupFAQInteraction();
+    setupHamburgerMenu();
+
+    function setupHamburgerMenu() {
+        const mobileHamburger = document.getElementById('mobile-hamburger-menu');
+        const navTabs = document.getElementById('nav-tabs');
+
+        function toggleMenu() {
+            if (navTabs) {
+                navTabs.classList.toggle('active');
+                if (mobileHamburger) {
+                    mobileHamburger.classList.toggle('active', navTabs.classList.contains('active'));
+                }
+            }
+        }
+
+        function closeMenu() {
+            if (mobileHamburger) mobileHamburger.classList.remove('active');
+            if (navTabs) navTabs.classList.remove('active');
+        }
+
+        if (mobileHamburger) {
+            mobileHamburger.addEventListener('click', toggleMenu);
+        }
+
+        // Close menu when a tab is clicked
+        if (navTabs) {
+            navTabs.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+        }
+    }
 
     // Remove window controls and resize observer for futuristic design
     function setupFAQInteraction() {
@@ -40,8 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const contents = document.querySelectorAll('.nav-content');
 
         tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
+            tab.addEventListener('click', function(e) {
                 const tabId = this.getAttribute('data-tab');
+                // If no data-tab attribute, this is an external link - don't handle it
+                if (!tabId) return;
+                
                 tabs.forEach(t => t.classList.remove('active'));
                 contents.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
