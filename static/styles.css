@@ -246,6 +246,17 @@ footer a:hover {
     text-decoration: underline;
 }
 
+.footer-socials a {
+    display: inline-block;
+    margin: 0 6px;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.footer-socials a:hover {
+    text-decoration: none;
+}
+
 a {
     color: var(--futuristic-accent); /* Make links stand out with the accent color */
     text-decoration: none;
