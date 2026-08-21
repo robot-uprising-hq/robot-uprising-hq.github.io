@@ -113,11 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    document.getElementById('apply-membership-btn')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        switchTabAndScroll('about', 'ccsh-citizenship-about');
-    });
-
     document.getElementById('competition-guide-btn')?.addEventListener('click', function(e) {
         e.preventDefault();
         switchTabAndScroll('hackathon', 'micro-invaders');
