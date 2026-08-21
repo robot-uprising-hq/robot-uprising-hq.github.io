@@ -2,6 +2,66 @@ document.addEventListener('DOMContentLoaded', function() {
     setupNavTabs();
     setupFAQInteraction();
     setupHamburgerMenu();
+    setupIntelLog();
+
+    function renderIntelEntry(entry) {
+        const article = document.createElement('article');
+        article.className = 'intel-entry';
+
+        const header = document.createElement('div');
+        header.className = 'intel-entry-header';
+        header.innerHTML = `
+            <span class="intel-date">${entry.date.replace(/-/g, '—')}</span>
+            <span class="intel-tag">${entry.tag}</span>
+        `;
+        article.appendChild(header);
+
+        const title = document.createElement('h3');
+        title.className = 'intel-title';
+        title.textContent = entry.title;
+        article.appendChild(title);
+
+        entry.description.split(/\n\s*\n/).forEach((paragraph) => {
+            const p = document.createElement('p');
+            p.className = 'intel-description';
+            p.textContent = paragraph.replace(/\n/g, ' ').trim();
+            article.appendChild(p);
+        });
+
+        const meta = document.createElement('div');
+        meta.className = 'intel-meta';
+        const hashtags = (entry.hashtags || []).map((tag) => `#${tag}`).join(' ');
+        meta.innerHTML = `
+            <span class="intel-author">${entry.author}</span>
+            <span class="intel-hashtags">${hashtags}</span>
+        `;
+        article.appendChild(meta);
+
+        return article;
+    }
+
+    function setupIntelLog() {
+        const container = document.getElementById('intel-log');
+        if (!container) return;
+
+        fetch('/intel/manifest.json')
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            })
+            .then((entries) => {
+                container.innerHTML = '';
+                if (!entries.length) {
+                    container.innerHTML = '<p class="intel-log-status">No intel logged yet.</p>';
+                    return;
+                }
+                entries.forEach((entry) => container.appendChild(renderIntelEntry(entry)));
+            })
+            .catch((error) => {
+                console.error('Failed to load intel log:', error);
+                container.innerHTML = '<p class="intel-log-status">Intel feed unavailable right now.</p>';
+            });
+    }
 
     function setupHamburgerMenu() {
         const mobileHamburger = document.getElementById('mobile-hamburger-menu');
