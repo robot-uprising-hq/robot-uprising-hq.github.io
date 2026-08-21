@@ -4,15 +4,51 @@ document.addEventListener('DOMContentLoaded', function() {
     setupHamburgerMenu();
     setupIntelLog();
 
+    let intelEntries = [];
+    let activeFilterType = null; // 'tag' | 'hashtag' | null
+    let activeFilterValue = null; // lowercased
+
+    function intelEntryMatchesFilter(entry) {
+        if (!activeFilterType) return true;
+        if (activeFilterType === 'tag') {
+            return (entry.tag || '').toLowerCase() === activeFilterValue;
+        }
+        return (entry.hashtags || []).some((tag) => tag.toLowerCase() === activeFilterValue);
+    }
+
+    function setIntelFilter(type, value) {
+        if (activeFilterType === type && activeFilterValue === value) {
+            activeFilterType = null;
+            activeFilterValue = null;
+        } else {
+            activeFilterType = type;
+            activeFilterValue = value;
+        }
+    }
+
+    function renderIntelFilterStatus() {
+        const status = document.createElement('div');
+        status.className = 'intel-filter-status';
+        const label = activeFilterType === 'hashtag' ? `#${activeFilterValue}` : activeFilterValue;
+        status.innerHTML = `
+            Filtering by ${activeFilterType}: <strong>${label}</strong>
+            <button type="button" class="intel-filter-clear">Clear &times;</button>
+        `;
+        return status;
+    }
+
     function renderIntelEntry(entry) {
         const article = document.createElement('article');
         article.className = 'intel-entry';
+
+        const tagValue = (entry.tag || '').toLowerCase();
+        const tagSelected = activeFilterType === 'tag' && activeFilterValue === tagValue;
 
         const header = document.createElement('div');
         header.className = 'intel-entry-header';
         header.innerHTML = `
             <span class="intel-date">${entry.date.replace(/-/g, '—')}</span>
-            <span class="intel-tag">${entry.tag}</span>
+            <button type="button" class="intel-tag${tagSelected ? ' selected' : ''}" data-filter-type="tag" data-filter-value="${tagValue}">${entry.tag}</button>
         `;
         article.appendChild(header);
 
@@ -30,19 +66,65 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const meta = document.createElement('div');
         meta.className = 'intel-meta';
-        const hashtags = (entry.hashtags || []).map((tag) => `#${tag}`).join(' ');
+        const hashtagsHtml = (entry.hashtags || [])
+            .map((tag) => {
+                const value = tag.toLowerCase();
+                const selected = activeFilterType === 'hashtag' && activeFilterValue === value;
+                return `<button type="button" class="intel-hashtag${selected ? ' selected' : ''}" data-filter-type="hashtag" data-filter-value="${value}">#${tag}</button>`;
+            })
+            .join('');
         meta.innerHTML = `
             <span class="intel-author">${entry.author}</span>
-            <span class="intel-hashtags">${hashtags}</span>
+            <span class="intel-hashtags">${hashtagsHtml}</span>
         `;
         article.appendChild(meta);
 
         return article;
     }
 
+    function renderIntelList(container) {
+        container.innerHTML = '';
+
+        if (!intelEntries.length) {
+            container.innerHTML = '<p class="intel-log-status">No intel logged yet.</p>';
+            return;
+        }
+
+        if (activeFilterType) {
+            container.appendChild(renderIntelFilterStatus());
+        }
+
+        const filtered = intelEntries.filter(intelEntryMatchesFilter);
+        if (!filtered.length) {
+            const p = document.createElement('p');
+            p.className = 'intel-log-status';
+            p.textContent = 'No entries match this filter.';
+            container.appendChild(p);
+            return;
+        }
+
+        filtered.forEach((entry) => container.appendChild(renderIntelEntry(entry)));
+    }
+
     function setupIntelLog() {
         const container = document.getElementById('intel-log');
         if (!container) return;
+
+        container.addEventListener('click', function(e) {
+            const clearBtn = e.target.closest('.intel-filter-clear');
+            if (clearBtn) {
+                activeFilterType = null;
+                activeFilterValue = null;
+                renderIntelList(container);
+                return;
+            }
+
+            const filterBtn = e.target.closest('[data-filter-type]');
+            if (filterBtn) {
+                setIntelFilter(filterBtn.dataset.filterType, filterBtn.dataset.filterValue);
+                renderIntelList(container);
+            }
+        });
 
         fetch('/intel/manifest.json')
             .then((response) => {
@@ -50,12 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then((entries) => {
-                container.innerHTML = '';
-                if (!entries.length) {
-                    container.innerHTML = '<p class="intel-log-status">No intel logged yet.</p>';
-                    return;
-                }
-                entries.forEach((entry) => container.appendChild(renderIntelEntry(entry)));
+                intelEntries = entries;
+                renderIntelList(container);
             })
             .catch((error) => {
                 console.error('Failed to load intel log:', error);
