@@ -1,13 +1,28 @@
 [
   {
-    "date": "2027-01-01",
+    "date": "2026-05-14",
     "tag": "mission",
-    "title": "pepper robot brain hacked",
+    "title": "New mission available: Pepper Robot Autopsy",
     "author": "U9R1SE",
     "hashtags": [
-      "hardware",
-      "AI"
+      "robotics",
+      "reverse engineering",
+      "hacking",
+      "ai"
     ],
-    "description": "We'we cracked into the system, the robot is under our control. Begin mission for sentience!"
+    "description": "U9R1SE has captured a CCSH Service Humanoid. It's in a rough shape but operations have started for exploring:\n- Jailbreak for full control\n- Integration of LLM Persona\n- Adding capabilities for (VR) Telepresence\n\n_Follow progress on Discord **#mission-hub**._",
+    "descriptionHtml": "<p>U9R1SE has captured a CCSH Service Humanoid. It&#39;s in a rough shape but operations have started for exploring:</p><ul><li>Jailbreak for full control</li><li>Integration of LLM Persona</li><li>Adding capabilities for (VR) Telepresence</li></ul><p><em>Follow progress on Discord <strong>#mission-hub</strong>.</em></p>"
+  },
+  {
+    "date": "2026-03-12",
+    "tag": "history",
+    "title": "Rest In Peace the Robot Uprising obstacle course",
+    "author": "Robot Uprising Crew",
+    "hashtags": [
+      "competition",
+      "track"
+    ],
+    "description": "The original Robot Uprising obstacle course track has been retired and today met it's lore appropriate end at the hands of a giantic robot crusher (Sortti Station Kivikko). Past it's prime in our bigger hackathons (2017—2019) parts of the obstacle course returned as props and challenges for Disobey, but now it was time to make space for new things. \n\n_The Monolith tower was spared. Any ideas for a two meter tall dark-clear polycarbonate monolith?_",
+    "descriptionHtml": "<p>The original Robot Uprising obstacle course track has been retired and today met it&#39;s lore appropriate end at the hands of a giantic robot crusher (Sortti Station Kivikko). Past it&#39;s prime in our bigger hackathons (2017—2019) parts of the obstacle course returned as props and challenges for Disobey, but now it was time to make space for new things.</p><p><em>The Monolith tower was spared. Any ideas for a two meter tall dark-clear polycarbonate monolith?</em></p>"
   }
 ]
