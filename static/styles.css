@@ -491,6 +491,15 @@ a:hover {
     max-width: 90%;
 }
 
+.intel-description p,
+.intel-description ul {
+    margin: 0 0 6px 0;
+}
+
+.intel-description ul {
+    padding-left: 22px;
+}
+
 .intel-meta {
     display: flex;
     flex-wrap: wrap;

@@ -9,6 +9,59 @@ const INTEL_DIR = path.join(__dirname, 'intel');
 const MANIFEST_PATH = path.join(INTEL_DIR, 'manifest.json');
 const REQUIRED_FIELDS = ['date', 'tag', 'title', 'author'];
 
+function escapeHtml(value) {
+    return value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function renderInlineMarkdown(value) {
+    return escapeHtml(value)
+        .replace(/(\*\*|__)(.+?)\1/g, '<strong>$2</strong>')
+        .replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>')
+        .replace(/(^|[^_])_([^_\n]+)_(?!_)/g, '$1<em>$2</em>');
+}
+
+function renderMarkdown(markdown) {
+    const blocks = [];
+    let paragraph = [];
+    let listItems = [];
+
+    function flushParagraph() {
+        if (paragraph.length) {
+            blocks.push(`<p>${renderInlineMarkdown(paragraph.join(' '))}</p>`);
+            paragraph = [];
+        }
+    }
+
+    function flushList() {
+        if (listItems.length) {
+            blocks.push(`<ul>${listItems.map((item) => `<li>${renderInlineMarkdown(item)}</li>`).join('')}</ul>`);
+            listItems = [];
+        }
+    }
+
+    for (const line of markdown.split('\n')) {
+        const listMatch = line.match(/^\s*[-*]\s+(.+)$/);
+        if (listMatch) {
+            flushParagraph();
+            listItems.push(listMatch[1]);
+        } else if (line.trim()) {
+            flushList();
+            paragraph.push(line.trim());
+        } else {
+            flushParagraph();
+            flushList();
+        }
+    }
+    flushParagraph();
+    flushList();
+    return blocks.join('');
+}
+
 function parseEntry(raw, filename) {
     const normalized = raw.replace(/\r\n/g, '\n');
     const blankLineIndex = normalized.indexOf('\n\n');
@@ -43,6 +96,7 @@ function parseEntry(raw, filename) {
         author: fields.author,
         hashtags,
         description: body,
+        descriptionHtml: renderMarkdown(body),
     };
 }
 

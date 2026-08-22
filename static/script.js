@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
         return status;
     }
 
+    function renderIntelDescription(description) {
+        const container = document.createElement('div');
+        container.className = 'intel-description';
+        container.innerHTML = description || '';
+        return container;
+    }
+
     function renderIntelEntry(entry) {
         const article = document.createElement('article');
         article.className = 'intel-entry';
@@ -57,12 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title.textContent = entry.title;
         article.appendChild(title);
 
-        entry.description.split(/\n\s*\n/).forEach((paragraph) => {
-            const p = document.createElement('p');
-            p.className = 'intel-description';
-            p.textContent = paragraph.replace(/\n/g, ' ').trim();
-            article.appendChild(p);
-        });
+        article.appendChild(renderIntelDescription(entry.descriptionHtml || entry.description));
 
         const meta = document.createElement('div');
         meta.className = 'intel-meta';
