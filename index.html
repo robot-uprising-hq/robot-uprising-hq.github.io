@@ -42,9 +42,11 @@
     </p>
     <ul class="nav-tabs" id="nav-tabs">
         <li class="nav-tab active" data-tab="hackathon">HACKATHON</li>
-        <li class="nav-tab" data-tab="about">ABOUT US</li>
-        <li class="nav-tab" onclick="window.open('https://holvi.com/shop/robotuprising/', '_blank')">WEBSHOP</li>
+        <li class="nav-tab" data-tab="about">ABOUT</li>
+        <li class="nav-tab" style="display: none;" onclick="window.open('https://holvi.com/shop/robotuprising/', '_blank')">WEBSHOP</li>
         <li class="nav-tab" data-tab="get-involved">GET INVOLVED</li>
+        <li class="nav-tab" data-tab="intel">INTEL</li>
+        <li class="nav-tab" data-tab="citizenship">CITIZENSHIP</li>
     </ul>
 </header>
 <main id="hackathon-content" class="nav-content active">
@@ -62,12 +64,12 @@
         </div>
         <div class="futuristic-content">
             <p>Connect with us on <strong>Discord</strong> and be part of the Uprising!</p>
-            <a href="https://discord.gg/wXMZ33wP5H" target="_blank" class="futuristic-button discord-button">
+            <a href="/discord.html" target="_blank" class="futuristic-button discord-button">
                 <i class="fab fa-discord"></i> Join Discord
             </a>
         </div>
     </div>
-    <div id="details" class="futuristic-container">
+    <div id="details" class="futuristic-container" style="display: none;">
         <div class="futuristic-title">
             <span>Robot Uprising Robotics Kits</span>
         </div>
@@ -235,6 +237,19 @@
         </div>
     </div>
 </main>
+<main id="intel-content" class="nav-content">
+    <div class="futuristic-container">
+        <div class="futuristic-title">
+            <span>Intel Log</span>
+        </div>
+        <div class="futuristic-content">
+            <p style="font-style: italic;">Field reports and happenings from the Uprising.</p>
+            <div id="intel-log" class="intel-log">
+                <p class="intel-log-status">Retrieving reports&hellip;</p>
+            </div>
+        </div>
+    </div>
+</main>
 <main id="about-content" class="nav-content">
     <div class="futuristic-container">
         <div class="futuristic-title">
@@ -253,50 +268,10 @@
         <div class="futuristic-content">
             <p>We are constantly looking for new team members to join our warm and ambitious team!</p>
             <p>Whether you're interested in robotics, event organizing, design, or just want to be part of something exciting, we'd love to have you join us.  Say hi at the <strong>#crew-enlist</strong> channel on our Discord to get started!</p>
-            <a href="https://discord.gg/wXMZ33wP5H" target="_blank" class="futuristic-button discord-button">
+            <a href="/discord.html" target="_blank" class="futuristic-button discord-button">
                 <i class="fab fa-discord"></i> Join Discord
             </a>
             <p>If you would like to join our team but for some reason or another do not have/use discord you can reach us at <a href="mailto:info@robotuprising.fi">info@robotuprising.fi</a>.</p>
-        </div>
-    </div>
-    <div class="futuristic-container" id="ccsh-citizenship-about">
-        <div class="futuristic-title">
-            <span>CCSH Citizenship</span>
-        </div>
-        <div class="futuristic-content">
-            <div class="micro-invaders-hero">
-                <img src="/static/images/ccsh_chatgpt_2.png" alt="CCSH Citizenship" class="robot-image">
-                <div class="micro-invaders-text">
-                </div>
-                <h1>Become a CCSH Citizen, Get SIN Verified today!*</h1>
-                <p>A formal Citizenship in the Corporate City State of Helsinki may offer e.g. advance notice of our up-coming events,
-                    in-game benefits, Discord perks etc. Side effects may include instant transportation to year 2042, joining a 
-                    hacker group, megacorporation or an underground cult.
-                    <br><br>
-                    Taxes** paid by the Citizens help fund our creative endeavours.
-                    <br><br>
-                    * Robot Uprising ry association membership
-                    <br>
-                    ** Membership fee for 2024 is 30€ with a self-set discount up to 100% (for e.g. students). No formal membership is required
-                        to attend Robot Uprising events and activities.
-                    <br><br>
-
-                    <strong>To apply for membership please email <a href="mailto:info@robotuprising.fi">info@robotuprising.fi</a> with the following details:</strong>
-                    <br><br>
-                    <strong>Subject:</strong> "Robot Uprising association membership application"<br>
-                    <br>
-                    <strong>Content:</strong>
-                    <ul>
-                        <li>Your full name</li>
-                        <li>Your current hometown and country</li>
-                        <li>Your email address for membership comms</li>
-                    </ul>
-                    <br>
-                    Before signing up for the association membership you may want to review the 
-                    <a href="https://drive.google.com/file/d/17ZITMISvTAE5gxSemFG_YA2yQe_jAwqt/view" target="_blank" rel="noopener noreferrer">Association rules (Finnish)</a>
-                    and <a href="https://drive.google.com/file/d/17ZS7Xsb5oQh19JdmzuBsaH6yE8EXRbV-/view" target="_blank" rel="noopener noreferrer">Privacy Policy for the member register (English TLDR + Finnish)</a> which are fairly standard. 
-                    </p>
-            </div>
         </div>
     </div>
 </main>
@@ -309,7 +284,7 @@
             <div class="micro-invaders-hero">
                 <img src="/static/images/community.jpg" alt="Join the Community" class="robot-image">
                 <p>Connect with fellow robotics enthusiasts, share ideas, and be part of the Uprising. Join our Discord to get started!</p>
-                <a href="https://discord.gg/wXMZ33wP5H" target="_blank" class="futuristic-button discord-button">
+                <a href="/discord.html" target="_blank" class="futuristic-button discord-button">
                     <i class="fab fa-discord"></i> Join Discord
                 </a>
             </div>
@@ -350,40 +325,10 @@
                 <img src="/static/images/crew2018.png" alt="Join the Crew" class="robot-image">
                 <p>We are constantly looking for new team members to join our warm and ambitious team!</p>
             <p>Whether you're interested in robotics, event organizing, design, or just want to be part of something exciting, we'd love to have you join us. Say hi at the <strong>#crew-enlist</strong> channel on our Discord to get started!</p>
-            <a href="https://discord.gg/wXMZ33wP5H" target="_blank" class="futuristic-button discord-button">
+            <a href="/discord.html" target="_blank" class="futuristic-button discord-button">
                 <i class="fab fa-discord"></i> Join Discord
             </a>
             <p>If you would like to join our team but for some reason or another do not have/use discord you can reach us at <a href="mailto:info@robotuprising.fi">info@robotuprising.fi</a>.</p>
-            </div>
-        </div>
-    </div>
-    <div class="futuristic-container">
-        <div class="futuristic-title">
-            <span>CCSH Citizenship</span>
-        </div>
-        <div class="futuristic-content">
-            <div class="micro-invaders-hero">
-                <img src="/static/images/ccsh_chatgpt_2.png" alt="CCSH Citizenship" class="robot-image">
-                <div class="micro-invaders-text">
-                </div>
-                <h1>Become a CCSH Citizen, Get SIN Verified today!*</h1>
-                <p>A formal Citizenship in the Corporate City State of Helsinki may offer e.g. advance notice of our up-coming events,
-                    in-game benefits, Discord perks etc. Side effects may include instant transportation to year 2042, joining a 
-                    hacker group, megacorporation or an underground cult.
-                    <br><br>
-                    Taxes** paid by the Citizens help fund our creative endeavours.
-                    <br><br>
-                    * Robot Uprising ry association membership
-                    <br>
-                    ** Membership fee includes a self-set discount up to 100%. No formal membership is required
-                        to attend Robot Uprising events and activities.
-
-                    <br>
-                    <a href="#" class="futuristic-button" id="apply-membership-btn">
-                        <i class="fas fa-user-plus"></i> Apply for Membership
-                        <!-- link behavior defined in script.js -->
-                    </a>
-                </p>
             </div>
         </div>
     </div>
@@ -402,10 +347,58 @@
         </div>
     </div>
 </main>
+<main id="citizenship-content" class="nav-content">
+    <div class="futuristic-container" id="ccsh-citizenship">
+        <div class="futuristic-title">
+            <span>CCSH Citizenship</span>
+        </div>
+        <div class="futuristic-content">
+            <div class="micro-invaders-hero">
+                <img src="/static/images/ccsh_chatgpt_2.png" alt="CCSH Citizenship" class="robot-image">
+                <div class="micro-invaders-text">
+                </div>
+                <h1>Become a CCSH Citizen, Get SIN Verified today!*</h1>
+                <p>A formal Citizenship in the Corporate City State of Helsinki may offer e.g. advance notice of our up-coming events,
+                    in-game benefits, Discord perks etc. Side effects may include instant transportation to year 2042, joining a
+                    hacker group, megacorporation or an underground cult.
+                    <br><br>
+                    Taxes** paid by the Citizens help fund our creative endeavours.
+                    <br><br>
+                    * Robot Uprising ry association membership
+                    <br>
+                    ** Membership fee for 2025 is 30€ with a self-set discount up to 100% (for e.g. students). No formal membership is required
+                        to attend Robot Uprising events and activities.
+                    <br><br>
+
+                    <strong>To apply for membership please email <a href="mailto:info@robotuprising.fi">info@robotuprising.fi</a> with the following details:</strong>
+                    <br><br>
+                    <strong>Subject:</strong> "Robot Uprising association membership application"<br>
+                    <br>
+                    <strong>Content:</strong>
+                    <ul>
+                        <li>Your full name</li>
+                        <li>Your current hometown and country</li>
+                        <li>Your email address for membership comms</li>
+                    </ul>
+                    <br>
+                    Before signing up for the association membership you may want to review the
+                    <a href="https://drive.google.com/file/d/17ZITMISvTAE5gxSemFG_YA2yQe_jAwqt/view" target="_blank" rel="noopener noreferrer">Association rules (Finnish)</a>
+                    and <a href="https://drive.google.com/file/d/17ZS7Xsb5oQh19JdmzuBsaH6yE8EXRbV-/view" target="_blank" rel="noopener noreferrer">Privacy Policy for the member register (English TLDR + Finnish)</a> which are fairly standard.
+                    </p>
+            </div>
+        </div>
+    </div>
+</main>
 <footer>
-    <p>&copy; 2025 Robot Uprising RY | Contact us: <a href="mailto:info@robotuprising.fi">info@robotuprising.fi</a></p>
+    <p>&copy; 2025—2026 Robot Uprising RY |
+        <span class="footer-socials">
+            <a href="/discord.html" target="_blank" aria-label="Join Discord"><i class="fab fa-discord"></i></a>
+            <a href="/telegram.html" target="_blank" aria-label="Join Telegram"><i class="fab fa-telegram"></i></a>
+        </span>
+        | Contact us: <a href="mailto:info@robotuprising.fi">info@robotuprising.fi</a></p>
 </footer>
 <!-- Temporary website made by Sam Zamanimehr, and he is very proud of it. //-->
+<!-- Temporary is now permanent. I also added a bunch of stuff!! -jKostet -->
 <script src="/static/script.js"></script>
 </body>
 </html>
